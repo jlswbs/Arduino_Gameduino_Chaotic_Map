@@ -1,13 +1,12 @@
-// Rational 2D chaotic map //
+// Lorenz 3D chaotic map //
 
 #include "SPI.h"
 #include "GD.h"
 
   byte i;
-  float a = 4.0f;
-  float b = 0.9f; 
-  float x = 0.1f;
-  float y = 0.0f;
+  float x = 0.5f;
+  float y = 0.5f;
+  float z = -1.0f;
        
 void setpixel(byte x, byte y, byte color){
   
@@ -33,7 +32,7 @@ void setup(){
   
   GD.fill(RAM_SPRIMG, 0, 16384);
   GD.wr16(PALETTE4A + 6, RGB(0,255,255));
-  GD.putstr(14, 1, "Rational 2D chaotic map");
+  GD.putstr(15, 1, "Lorenz 3D chaotic map");
   GD.putstr(16, 36, "Created by JLS 2021");
     
 }
@@ -41,9 +40,13 @@ void setup(){
 void loop(){
   
   float nx = x;
-  x = (-a*nx)/(1.0f+powf(y,2.0f));
-  y = nx+b*y;
-       
-  setpixel(128+(12*x), 128+(16*y), 255);
+  float ny = y;
+  float nz = z;
+  
+  x = nx*ny-nz;
+  y = nx;
+  z = ny; 
+  
+  setpixel(128+(96*x), 128+(96*y), 255);
        
 }
