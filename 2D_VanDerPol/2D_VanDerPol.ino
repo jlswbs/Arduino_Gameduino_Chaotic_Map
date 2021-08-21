@@ -1,4 +1,4 @@
-// Circular 2D chaotic map //
+// Van der Pol 2D chaotic map //
 
 #include "SPI.h"
 #include "GD.h"
@@ -8,7 +8,7 @@
   float y = 0.0f;
   float xn = x;
   float yn = y;
-  float dt = 0.814f;
+  float dt = 0.314f;
        
 void setpixel(byte x, byte y, byte color){
   
@@ -34,7 +34,7 @@ void setup(){
   
   GD.fill(RAM_SPRIMG, 0, 16384);
   GD.wr16(PALETTE4A + 6, RGB(0,255,255));
-  GD.putstr(14, 1, "Circular 2D chaotic map");
+  GD.putstr(12, 1, "Van der Pol 2D chaotic map");
   GD.putstr(16, 36, "Created by JLS 2021");
     
 }
@@ -42,10 +42,10 @@ void setup(){
 void loop(){
   
   xn = y;
-  yn = (1.0f-powf(x,2.0f)-powf(y,2.0f))*y-x; 
+  yn = (1.0f-powf(x,2.0f))*y-x;
   x = x+xn*dt;
   y = y+yn*dt;
        
-  setpixel(128+(72*x), 128+(96*y), 255);
+  setpixel(128+(42*x), 128+(38*y), 255);
        
 }

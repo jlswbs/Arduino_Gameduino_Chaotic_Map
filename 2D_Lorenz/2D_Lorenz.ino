@@ -41,11 +41,11 @@ void setup(){
 
 void loop(){
   
-  xn = x-y-powf(x,3);
-  yn = x-(x*x)*y; 
+  xn = x-y-powf(x,3.0f);
+  yn = x-powf(x,2.0f)*y; 
   x = x+xn*dt;
   y = y+yn*dt;
   
-  setpixel (128+(76*x), 128+(96*y),255);
+  setpixel(128+(76*x), 128+(96*y), 255);
        
 }
