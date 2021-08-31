@@ -41,7 +41,6 @@ void setup(){
 void loop(){
   
   float nx = x;
-  //double oldy = y;
   x = 1.0f-a*fabs(nx)+b*y;
   y = nx;
   
